@@ -1,0 +1,50 @@
+syntax = "proto3";
+option go_package = "./pbgo/pbpush";
+
+//玩家添加任务
+message ReqAddPushTasks{
+  repeated PushUserTask tasks = 1;
+}
+
+message RspAddPushTasks{
+  int32 status = 1;
+  string errMsg = 2;
+}
+
+message ReqDelPushTaskAll{
+  int32 Account = 1;//账号id
+}
+
+message RspDelPushTaskAll{
+  int32 status = 1;
+  string errMsg = 2;
+}
+
+message ReqDelPushTaskType{
+  int32 Account = 1;//账号id
+  int32 handleType = 2;//任务类型
+}
+
+message RspDelPushTaskType{
+  int32 status = 1;
+  string errMsg = 2;
+}
+
+service PushApi{
+  rpc AddPushTasks(ReqAddPushTasks) returns(RspAddPushTasks);//添加推送任务
+  rpc DelPushTasks(ReqDelPushTaskAll) returns(RspDelPushTaskAll);//删掉该玩家所有
+  rpc DelPushTaskType(ReqDelPushTaskType) returns(RspDelPushTaskType);//删掉该玩家指定类型
+}
+
+//==================== 推送 ====================//
+message PushUserTask{
+  int32 Account = 1;//账号id
+  int32 handleType = 2;//任务类型
+  string Channel = 3;//操作平台,android,ios,其他
+  string Bundle = 4;//包名，游戏项目,aod
+  string DeviceToken = 5;//设备token
+  string Language = 6;//语言
+  string Ip = 7;//ip地址
+  int64 sendCd = 8;//剩余cd后发送
+  int64 sendAt = 9;//发送具体时间，定时推送用
+}
