@@ -29,22 +29,6 @@ slot_dev hat_push 5 debug
 protoc --go_out=plugins=kite:../slot_logic/ proto/api.proto
 ```
 
-## 导表 PB 生成
-
-执行以下命令生成导表 PB 文件：
-
-```shell
-cd /Users/duanchengwen/Re/slot_cehua/ && git pull && cd /Users/duanchengwen/Re/Archive && ./exporter
-```
-
-## 额外说明
-
-线上部署错误日志查询路径：
-
-```shell
-/home/dhcd/back/service_deploy/slot_dev-slot_logic-1/log
-```
-
 ## 贡献
 
 如果您有任何改进建议或想要贡献代码，请随时提交 Pull Request 或者在 Issues 中提出。
